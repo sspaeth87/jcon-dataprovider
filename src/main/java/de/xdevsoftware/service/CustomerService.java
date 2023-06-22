@@ -46,11 +46,11 @@ public class CustomerService {
 
     public HttpResponse<CustomerDTO> save(CustomerCreateDTO customerDTO) {
         LOG.info("An attempt is made to save a customer with the following data. Firstname: {}, Lastname: {}, E-Mail: {}", customerDTO.getFirstname(), customerDTO.getLastname(), customerDTO.getEmail());
-        Customer customer = Customer.builder()
-                .firstname(customerDTO.getFirstname())
-                .lastname(customerDTO.getLastname())
-                .email(customerDTO.getEmail())
-                .build();
+        
+        Customer customer = new Customer();
+        customer.setFirstname(customerDTO.getFirstname());
+        customer.setLastname(customerDTO.getLastname());
+        customer.setEmail(customerDTO.getEmail());
 
         customerRepository.save(customer);
         LOG.info("The customer {} {} ({}) was saved successfully.", customerDTO.getFirstname(), customerDTO.getLastname(), customerDTO.getEmail());

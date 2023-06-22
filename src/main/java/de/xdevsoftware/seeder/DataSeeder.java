@@ -26,12 +26,11 @@ public class DataSeeder implements ApplicationEventListener<ServerStartupEvent> 
 
         if(customers.isEmpty()) {
             LOG.info("Customers are empty, DataSeeder is running.");
-
-            Customer customer = Customer.builder()
-                    .firstname("Sebastian")
-                    .lastname("Späth")
-                    .email("s.spaeth@xdev-software.de")
-                    .build();
+            
+            Customer customer = new Customer();
+            customer.setFirstname("Sebastian");
+            customer.setLastname("Späth");
+            customer.setEmail("s.spaeth@xdev-software.de");
 
             DB.root.getCustomers().add(customer);
             DB.storageManager.store(DB.root.getCustomers());
